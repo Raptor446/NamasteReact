@@ -11,10 +11,36 @@ const heading = React.createElement(
 
 console.log(heading)
 
-const jsxHeading = <h1>Namaste React</h1>
+// React Element
+const jsxHeading = (
+    <div>
+        <p className="head" tabIndex="5">
+            Namaste React Heading
+        </p>
+        <p> Second Line</p>
+    </div>
+)
+
+// Functional Component
+const HeadingComponent1 = () => (<h1 className="heading">Functional component</h1>)
+// We can remove the return since its just one line component like the above
+const HeadingComponent = () => {
+    return (
+    <div>
+        {jsxHeading}
+        <p className="head" tabIndex="5">
+            Namaste React
+        </p>
+        <HeadingComponent1 />
+        <HeadingComponent1></HeadingComponent1>
+        {HeadingComponent1()}
+        <p> Third Line</p>
+    </div>)
+}
+// All three ways of calling HeadingComponent1 is correct and will return the same thing.
 
 console.log(jsxHeading)
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 
-root.render(heading)
+root.render(<HeadingComponent />)
